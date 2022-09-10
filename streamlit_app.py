@@ -32,7 +32,7 @@ if uploaded_file is not None:
         cl = cl + 1
 
     st.text('renombrado de columns')
-    st.write(columns_rename)
+    st.json(columns_rename)
     
     st.text('datos renombrados')
     st.write(df.rename(columns=columns_rename))
