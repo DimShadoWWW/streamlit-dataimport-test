@@ -15,7 +15,7 @@ def new_field(name):
         v = st.text_input('custom name')
     return v
 
-columns_rename = []
+columns_rename = {}
 # if 'columns_data' not in st.session_state.keys():
 #     st.session_state['columns_data'] = columns_data
 # else:
