@@ -10,40 +10,17 @@ columns_rename = {}
 
 def new_field(name):
     # st.text_input(name)
-    v = st.selectbox(name, key='dynamic_checkbox_{}'.format(name), options=[d for d in dest_columns if d not in columns_rename.keys()])
+    v = st.selectbox(name, key='dynamic_checkbox_{}'.format(name), options=[d for d in dest_columns if d not in columns_rename.values()])
     if st.checkbox('custom'):
-        v = st.text_input('custom name')
+        v1 = st.text_input('custom name')
+        return v1
     return v
 
-columns_rename = {}
 
 if 'columns_rename' not in st.session_state.keys():
     st.session_state['columns_rename'] = columns_rename
 else:
     columns_rename = st.session_state['columns_rename']
-
-# def checkbox_container(data):
-#     st.header('Add renaming of fields')
-
-#     # cols = st.columns(10)
-#     if st.button("New", help="Add new rename of columns"):
-#         c = str(st.selectbox('Input field name', key='dynamic_checkbox_{}'.format(len(columns_rename.keys())), options=[d for d in df.columns.to_list() if d not in columns_rename.keys()]))
-#         columns_rename[c]= new_field(c)
-
-#     # if cols[1].button('Select All'):
-#     #     for i in data:
-#     #         st.session_state['dynamic_checkbox_' + i] = True
-#     #     st.experimental_rerun()
-#     # if cols[2].button('UnSelect All'):
-#     #     for i in data:
-#     #         st.session_state['dynamic_checkbox_' + i] = False
-#     #     st.experimental_rerun()
-#     # for i in data:
-#     #     st.checkbox(i, key='dynamic_checkbox_' + i)
-
-# # def get_selected_checkboxes():
-# #     return [i.replace('dynamic_checkbox_','') for i in st.session_state.keys() if i.startswith('dynamic_checkbox_') and st.session_state[i]]
-
 
 if uploaded_file is not None:
     # st.write(dir(uploaded_file))
