@@ -26,7 +26,7 @@ def checkbox_container(data):
 
     # cols = st.columns(10)
     if st.button("New", help="Add new rename of columns"):
-        c = str(st.selectbox('Input field name', key='dynamic_checkbox_{}'.format(len(columns_rename.keys())), options=[d for d in dest_columns if d not in columns_rename.keys()]))
+        c = str(st.selectbox('Input field name', key='dynamic_checkbox_{}'.format(len(columns_rename.keys())), options=[d for d in df.columns.to_list() if d not in columns_rename.keys()]))
         columns_rename[c]= new_field(c)
 
     # if cols[1].button('Select All'):
