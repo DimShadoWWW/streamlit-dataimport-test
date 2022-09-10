@@ -19,7 +19,7 @@ if uploaded_file is not None:
     for c in columns_rename.keys():
         columns_rename[c] = st.selectbox(label=c, options=dest_columns)
 
-    st.write(columns_rename)
+    st.json(columns_rename)
     
     st.write(df.rename(columns=columns_rename))
     #read csv
