@@ -16,8 +16,11 @@ if uploaded_file is not None:
     st.write(df)
     # st.write(df.columns)
     columns_rename = {c: '' for c in df.columns.tolist()}
+    v = {}
     for c in columns_rename.keys():
-        columns_rename[c] = st.selectbox(label=c, options=dest_columns)
+        v[c] = st.selectbox(label=c, options=dest_columns)
+        if v[c] is not None and v[c] != '':
+            columns_rename[c] = v[c]
 
     st.write(columns_rename)
     
