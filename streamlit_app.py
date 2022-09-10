@@ -5,7 +5,7 @@ from io import StringIO
 
 uploaded_file = st.file_uploader('Choose a file')
 
-dest_columns=['id', 'nombre', 'tipo']
+dest_columns=['', 'id', 'nombre', 'tipo']
 columns_rename = {}
 
 if uploaded_file is not None:
@@ -18,7 +18,7 @@ if uploaded_file is not None:
     columns_rename = {c: c for c in set(df.columns.tolist())}
     v = {}
     for c in columns_rename.keys():
-        v[c] = st.selectbox(label=c, options=[''].extend(dest_columns))
+        v[c] = st.selectbox(label=c, options=dest_columns)
         if v[c] is not None and v[c] != '':
             columns_rename[c] = v[c]
 
