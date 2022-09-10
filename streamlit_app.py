@@ -72,6 +72,6 @@ if uploaded_file is not None:
         
 
 
-checkbox_container(columns_data)
-st.write('You selected:')
-st.write(get_selected_checkboxes())
+# checkbox_container(columns_data)
+# st.write('You selected:')
+# st.write(get_selected_checkboxes())
