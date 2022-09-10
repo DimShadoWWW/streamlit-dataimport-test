@@ -10,7 +10,7 @@ columns_rename = {}
 
 def new_field(name):
     # st.text_input(name)
-    v = st.selectbox(name, options=[d for d in dest_columns if d not in columns_rename.keys()])
+    v = st.selectbox(name, key='dynamic_checkbox_{}'.format(name), options=[d for d in dest_columns if d not in columns_rename.keys()])
     if st.checkbox('custom'):
         v = st.text_input('custom name')
     return v
@@ -24,9 +24,9 @@ columns_rename = {}
 def checkbox_container(data):
     st.header('Add renaming of fields')
 
-    cols = st.columns(10)
-    if cols[0].button("New", help="Add new rename of columns"):
-        c = str(st.selectbox('Input field name', options=[d for d in dest_columns if d not in columns_rename.keys()]))
+    # cols = st.columns(10)
+    if st.button("New", help="Add new rename of columns"):
+        c = str(st.selectbox('Input field name', key='dynamic_checkbox_{}'.format(len(columns_rename.keys())), options=[d for d in dest_columns if d not in columns_rename.keys()]))
         columns_rename[c]= new_field(c)
 
     # if cols[1].button('Select All'):
