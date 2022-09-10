@@ -38,5 +38,5 @@ if uploaded_file is not None:
         c = st.selectbox('Rename field', options=[d for d in dest_columns if d not in columns_rename.keys()])
         # c = st.selectbox('Rename field', options=[d for d in dest_columns if d not in columns_rename.keys()])
         if st.button("New", help="Add new rename of columns"):
-            columns_rename[c] = new_field(c)
+            columns_rename[str(c)] = new_field(str(c))
         
