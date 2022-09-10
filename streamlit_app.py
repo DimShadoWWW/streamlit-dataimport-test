@@ -57,7 +57,14 @@ if uploaded_file is not None:
     # for c in columns_rename.keys():
     #     columns_rename[c] = st.selectbox(label=c, options=dest_columns)
 
-    checkbox_container(df.columns.tolist())
+    # checkbox_container(df.columns.tolist())
+    
+    st.header('Add renaming of fields')
+    i = st.selectbox('Input field name', key='dynamic_checkbox_{}'.format(len(columns_rename.keys())), options=[d for d in df.columns.to_list() if d not in columns_rename.keys()])
+    o = new_field(i)
+    # cols = st.columns(10)
+    if st.button("New", help="Add new rename of columns"):
+        columns_rename[str(i)]= str(o)
 
     st.json(columns_rename)
     
