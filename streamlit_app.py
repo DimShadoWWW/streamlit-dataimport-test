@@ -17,10 +17,10 @@ def new_field(name):
     return v
 
 
-if 'columns_rename' not in st.session_state.keys():
-    st.session_state['columns_rename'] = columns_rename
-else:
-    columns_rename = st.session_state['columns_rename']
+# if 'columns_rename' not in st.session_state.keys():
+#     st.session_state['columns_rename'] = columns_rename
+# else:
+#     columns_rename = st.session_state['columns_rename']
 
 if uploaded_file is not None:
     # st.write(dir(uploaded_file))
