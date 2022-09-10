@@ -24,7 +24,7 @@ if uploaded_file is not None:
     for c in columns_rename.keys():
         if cl > 2:
             cl = 0
-        with col[cl]:
+        with cols[cl]:
             v[c] = st.selectbox(label=c, options=dest_columns)
             if v[c] is not None and v[c] != '':
                 columns_rename[c] = v[c]
