@@ -64,10 +64,10 @@ if uploaded_file is not None:
     o = new_field(i)
     # cols = st.columns(10)
     if st.button("New", help="Add new rename of columns"):
-        columns_rename.append({str(i): str(o)})
+        columns_rename[str(i)] = str(o)
 
-    st.json(columns_rename)
-
+    st.write(columns_rename)
+    
     # st.write(df.rename(columns=columns_rename))
     # #read csv
     # # df1=pd.read_csv(uploaded_file, type=['csv','xlsx'], accept_multiple_files=False)
