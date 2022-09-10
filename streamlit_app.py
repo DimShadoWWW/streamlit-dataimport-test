@@ -21,6 +21,7 @@ if uploaded_file is not None:
 
     st.write(columns_rename)
     
+    st.write(df.rename(columns=columns_rename))
     #read csv
     # df1=pd.read_csv(uploaded_file, type=['csv','xlsx'], accept_multiple_files=False)
     
