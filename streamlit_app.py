@@ -5,8 +5,10 @@ from io import StringIO
 
 uploaded_file = st.file_uploader('Choose a file')
 
+
 dest_columns=['id', 'nombre', 'tipo', 'valor']
 columns_rename = {}
+st.session_state['columns_rename'] = columns_rename
 
 def new_field(name):
     # st.text_input(name)
@@ -16,10 +18,10 @@ def new_field(name):
         return v1
     return v
 
-st.session_state['columns_rename'] = columns_rename
-# if 'columns_rename' not in st.session_state.keys():
-# else:
-#     columns_rename = st.session_state['columns_rename']
+if 'columns_rename' not in st.session_state.keys():
+    st.session_state['columns_rename'] = columns_rename
+else:
+    columns_rename = st.session_state['columns_rename']
 
 if uploaded_file is not None:
     # st.write(dir(uploaded_file))
