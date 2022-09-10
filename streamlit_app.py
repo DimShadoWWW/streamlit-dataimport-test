@@ -9,7 +9,7 @@ if uploaded_file is not None:
     st.write(dir(uploaded_file))
     st.write(uploaded_file)
     lines = uploaded_file.readlines()[:3]
-    df = pd.read_csv(StringIO('\n'.join([str(l) for l in lines])), header=None)
+    df = pd.read_csv(StringIO(''.join([str(l) for l in lines])), header=None)
     st.write(df)
     st.write(df.columns)
     #read csv
