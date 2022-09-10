@@ -8,6 +8,9 @@ uploaded_file = st.file_uploader('Choose a file')
 dest_columns=['', 'id', 'nombre', 'tipo']
 columns_rename = {}
 
+cols = {}
+cols[0], cols[1], cols[2] = st.columns(3)
+
 if uploaded_file is not None:
     # st.write(dir(uploaded_file))
     # st.write(uploaded_file)
@@ -17,10 +20,15 @@ if uploaded_file is not None:
     # st.write(df.columns)
     columns_rename = {c: c for c in dict.fromkeys(df.columns.tolist()).keys()}
     v = {}
+    cl = 0
     for c in columns_rename.keys():
-        v[c] = st.selectbox(label=c, options=dest_columns)
-        if v[c] is not None and v[c] != '':
-            columns_rename[c] = v[c]
+        if cl > 2:
+            cl = 0
+        with col[cl]:
+            v[c] = st.selectbox(label=c, options=dest_columns)
+            if v[c] is not None and v[c] != '':
+                columns_rename[c] = v[c]
+        cl = cl + 1
 
     st.write(columns_rename)
     
