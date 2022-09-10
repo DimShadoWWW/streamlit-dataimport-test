@@ -7,12 +7,12 @@ uploaded_file = st.file_uploader('Choose a file')
 
 
 dest_columns=['id', 'nombre', 'tipo', 'valor']
-columns_rename = {}
+columns_rename = []
 st.session_state['columns_rename'] = columns_rename
 
 def new_field(name):
     # st.text_input(name)
-    v = st.selectbox(name, key='dynamic_checkbox_{}'.format(name), options=[d for d in dest_columns if d not in columns_rename.values()])
+    v = st.selectbox(name, key='dynamic_checkbox_{}'.format(name), options=[d for d in dest_columns if d not in [c['output'] for c in columns_rename]])
     if st.checkbox('custom'):
         v1 = st.text_input('custom name')
         return v1
@@ -40,9 +40,16 @@ if uploaded_file is not None:
     
     st.header('Add renaming of fields')
     # cols = st.columns(10)
+    i = st.selectbox('Input field name', key='dynamic_checkbox_{}'.format(len(columns_rename.keys())), options=[d for d in df.columns.to_list() if d not in columns_rename.keys()])
+    o = new_field(str(i))
     if st.button("New", help="Add new rename of columns"):
         i = st.selectbox('Input field name', key='dynamic_checkbox_{}'.format(len(columns_rename.keys())), options=[d for d in df.columns.to_list() if d not in columns_rename.keys()])
-        columns_rename[str(i)] = str(new_field(i))
+        columns_rename.append(
+            {
+                'input': '{}'.format(i),
+                'output': '{}'.format(o),
+            }
+        )
 
     st.write(columns_rename)
 
