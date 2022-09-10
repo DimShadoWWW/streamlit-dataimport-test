@@ -15,7 +15,7 @@ if uploaded_file is not None:
     df = pd.read_csv(StringIO('\n'.join([l.decode().replace('\n', '') for l in lines])))
     st.write(df)
     # st.write(df.columns)
-    columns_rename = {c: c for c in df.columns.tolist()}
+    columns_rename = {c: c for c in set(df.columns.tolist())}
     v = {}
     for c in columns_rename.keys():
         v[c] = st.selectbox(label=c, options=dest_columns)
