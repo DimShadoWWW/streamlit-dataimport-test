@@ -16,10 +16,11 @@ def new_field(name):
     return v
 
 columns_rename = {}
-# if 'columns_data' not in st.session_state.keys():
-#     st.session_state['columns_data'] = columns_data
-# else:
-#     columns_data = st.session_state['columns_data']
+
+if 'columns_rename' not in st.session_state.keys():
+    st.session_state['columns_rename'] = columns_rename
+else:
+    columns_rename = st.session_state['columns_rename']
 
 # def checkbox_container(data):
 #     st.header('Add renaming of fields')
@@ -60,14 +61,13 @@ if uploaded_file is not None:
     # checkbox_container(df.columns.tolist())
     
     st.header('Add renaming of fields')
-    i = st.selectbox('Input field name', key='dynamic_checkbox_{}'.format(len(columns_rename.keys())), options=[d for d in df.columns.to_list() if d not in columns_rename.keys()])
-    o = new_field(i)
     # cols = st.columns(10)
     if st.button("New", help="Add new rename of columns"):
-        columns_rename[str(i)] = str(o)
+        i = st.selectbox('Input field name', key='dynamic_checkbox_{}'.format(len(columns_rename.keys())), options=[d for d in df.columns.to_list() if d not in columns_rename.keys()])
+        columns_rename[str(i)] = str(new_field(i))
 
     st.write(columns_rename)
-    
+
     # st.write(df.rename(columns=columns_rename))
     # #read csv
     # # df1=pd.read_csv(uploaded_file, type=['csv','xlsx'], accept_multiple_files=False)
@@ -79,6 +79,6 @@ if uploaded_file is not None:
         
 
 
-# checkbox_container(columns_data)
+# checkbox_container(columns_rename)
 # st.write('You selected:')
 # st.write(get_selected_checkboxes())
