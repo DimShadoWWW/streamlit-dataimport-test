@@ -16,9 +16,8 @@ def new_field(name):
         return v1
     return v
 
-
+st.session_state['columns_rename'] = columns_rename
 # if 'columns_rename' not in st.session_state.keys():
-#     st.session_state['columns_rename'] = columns_rename
 # else:
 #     columns_rename = st.session_state['columns_rename']
 
