@@ -51,7 +51,7 @@ if uploaded_file is not None:
             }
         )
 
-    st.write(columns_rename)
+    # st.write(columns_rename)
 
     # st.write(df.rename(columns=columns_rename))
     # #read csv
