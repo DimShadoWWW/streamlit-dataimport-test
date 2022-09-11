@@ -1,4 +1,5 @@
 import streamlit as st
+import sys
 # import pandas as pd
 # import numpy as np
 # from io import StringIO
@@ -10,12 +11,14 @@ import streamlit as st
 # # from redis.commands.search.indexDefinition import IndexDefinition, IndexType
 # # from redis.commands.search.query import NumericFilter, Query
 
-
+sys.stdout.flush()
 st.write('start')
 
+sys.stdout.flush()
 
 if st.button('start')
     st.write('started')
+sys.stdout.flush()
 
 # uploaded_file = st.file_uploader('Choose a file')
 
