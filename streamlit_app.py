@@ -52,7 +52,6 @@ if uploaded_file is not None:
 
     if st.button('import'):
         redis_url = furl(st.secrets["redis_url"])
-        st.info(redis_url)
 
         redisCon = redis.Redis(
             host=redis_url.host,
@@ -66,8 +65,6 @@ if uploaded_file is not None:
             max_connections=10,
             decode_responses=True,
             retry_on_timeout=True)
-
-        st.info(redisCon)
 
         index_name = "idx:data"
 
