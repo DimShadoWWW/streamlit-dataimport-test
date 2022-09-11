@@ -100,10 +100,10 @@ if uploaded_file is not None:
         df = df.fillna(np.nan).replace([np.nan], [None])
         for index, row in df.iterrows():
             values = row.to_dict()
-            st.json(values)
-            for k in values.keys():
-                print(k, type(values[k]))
-            print("data:{id}".format(id=values['uuid']))
+            # st.json(values)
+            # for k in values.keys():
+            #     print(k, type(values[k]))
+            # print("data:{id}".format(id=values['uuid']))
             redisCon.json().set("data:{id}".format(id=values['uuid']), '.', values)
 
 # except Exception as e:
