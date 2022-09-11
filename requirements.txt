@@ -1,6 +1,6 @@
-altair
+# altair
 pandas
 attrs<22.0,>=21.2
 streamlit==1.12.2
-# redis
+redis
 furl
