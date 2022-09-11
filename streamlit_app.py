@@ -1,17 +1,22 @@
 import streamlit as st
-import pandas as pd
-import numpy as np
-from io import StringIO
-import uuid
-from furl import furl
-# import redis
-# from redis.commands.json.path import Path
-# from redis.commands.search.field import NumericField, TagField, TextField
-# from redis.commands.search.indexDefinition import IndexDefinition, IndexType
-# from redis.commands.search.query import NumericFilter, Query
+# import pandas as pd
+# import numpy as np
+# from io import StringIO
+# import uuid
+# from furl import furl
+# # import redis
+# # from redis.commands.json.path import Path
+# # from redis.commands.search.field import NumericField, TagField, TextField
+# # from redis.commands.search.indexDefinition import IndexDefinition, IndexType
+# # from redis.commands.search.query import NumericFilter, Query
+
 
 st.write('start')
-st.write('started')
+
+
+if st.button('start')
+    st.write('started')
+
 # uploaded_file = st.file_uploader('Choose a file')
 
 # dest_columns=['', 'id', 'nombre', 'tipo']
