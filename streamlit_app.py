@@ -99,6 +99,7 @@ if uploaded_file is not None:
         df['uuid'] = [uuid.uuid4().hex for x in range(df.shape[0])]
         for index, row in df.iterrows():
             values = row.to_dict()
+            st.json(values)
             for k in values.keys():
                 print(k, type(values[k]))
             print("data:{id}".format(id=values['uuid']))
