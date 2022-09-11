@@ -33,13 +33,13 @@ if uploaded_file is not None:
     v = {}
     cl = 0
     for c in columns_rename.keys():
-    if cl > 2:
-        cl = 0
-    with cols[cl]:
-        v[c] = st.selectbox(label=c, options=[d for d in dest_columns if d in dict.fromkeys(df.columns.tolist()).keys() or d not in columns_rename.values()])
-        if v[c] is not None and v[c] != '':
-            columns_rename[c] = v[c]
-    cl = cl + 1
+        if cl > 2:
+            cl = 0
+        with cols[cl]:
+            v[c] = st.selectbox(label=c, options=[d for d in dest_columns if d in dict.fromkeys(df.columns.tolist()).keys() or d not in columns_rename.values()])
+            if v[c] is not None and v[c] != '':
+                columns_rename[c] = v[c]
+        cl = cl + 1
 
     st.text('renombrado de columns')
     st.json(columns_rename)
