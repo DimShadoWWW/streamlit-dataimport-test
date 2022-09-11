@@ -10,10 +10,9 @@ from redis.commands.search.field import NumericField, TagField, TextField
 from redis.commands.search.indexDefinition import IndexDefinition, IndexType
 from redis.commands.search.query import NumericFilter, Query
 
+st.info('start')
 try:
-
-
-
+    st.info('started')
     uploaded_file = st.file_uploader('Choose a file')
 
     dest_columns=['', 'id', 'nombre', 'tipo']
