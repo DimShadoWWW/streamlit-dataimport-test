@@ -3,12 +3,12 @@ import pandas as pd
 import numpy as np
 from io import StringIO
 import uuid
-import redis
 from furl import furl
-from redis.commands.json.path import Path
-from redis.commands.search.field import NumericField, TagField, TextField
-from redis.commands.search.indexDefinition import IndexDefinition, IndexType
-from redis.commands.search.query import NumericFilter, Query
+# import redis
+# from redis.commands.json.path import Path
+# from redis.commands.search.field import NumericField, TagField, TextField
+# from redis.commands.search.indexDefinition import IndexDefinition, IndexType
+# from redis.commands.search.query import NumericFilter, Query
 
 st.info('start')
 try:
