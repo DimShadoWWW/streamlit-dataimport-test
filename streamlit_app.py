@@ -97,6 +97,7 @@ if uploaded_file is not None:
             pass
 
         df['uuid'] = [uuid.uuid4().hex for x in range(df.shape[0])]
+        df = df.fillna(None)
         for index, row in df.iterrows():
             values = row.to_dict()
             st.json(values)
