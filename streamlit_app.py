@@ -11,53 +11,6 @@ from redis.commands.search.indexDefinition import IndexDefinition, IndexType
 from redis.commands.search.query import NumericFilter, Query
 
 try:
-    redis_url = furl(st.secrets["redis_url"])
-    st.info(redis_url)
-
-    redisCon = redis.Redis(
-        host=redis_url.host,
-        port=redis_url.port,
-        password=redis_url.password if redis_url.password != '' else None,
-        # host='redis',
-        # port=6379,
-        # host='aqueous-badlands-51618.herokuapp.com',
-        # port=80,
-        # password='af80e90f144cdd37ae539349ba0bc7a4',
-        max_connections=10,
-        decode_responses=True,
-        retry_on_timeout=True)
-
-    st.info(redisCon)
-
-    index_name = "idx:data"
-
-    schema = (
-        TextField("$.name", as_name="name", sortable=True),
-        # TextField("$.middleName", as_name="middleName", sortable=True),
-        # TextField("$.lastName", as_name="lastName", sortable=True),
-        # TextField("$.shortName", as_name="shortName", sortable=True),
-        # TextField("$.nickName", as_name="nickName", sortable=True),
-        # TextField("$.side", as_name="side", sortable=True),
-        # TextField("$.country", as_name="country", sortable=True),
-
-        NumericField("$.id", as_name="id"),
-        # NumericField("$.countryId", as_name="countryId"),
-        # NumericField("$.teamId", as_name="teamId"),
-        # NumericField("$.currentTeamId", as_name="currentTeamId"),
-        # NumericField("$.gamesPlayed", as_name="gamesPlayed", sortable=True),
-
-        # # TagField("$.user.city", as_name="city"),
-        # TagField("$.channel", as_name="channel"),
-    )
-
-    try:
-        ftindex_data = redisCon.ft(index_name)
-        ftindex_data.create_index(schema,
-                                    definition=IndexDefinition(
-                                        prefix=["data:"],
-                                        index_type=IndexType.JSON))
-    except redis.exceptions.ResponseError:
-        pass
 
 
 
@@ -99,6 +52,54 @@ try:
         # df1=pd.read_csv(uploaded_file, type=['csv','xlsx'], accept_multiple_files=False)
         
         if st.button('import'):
+            redis_url = furl(st.secrets["redis_url"])
+            st.info(redis_url)
+
+            redisCon = redis.Redis(
+                host=redis_url.host,
+                port=redis_url.port,
+                password=redis_url.password if redis_url.password != '' else None,
+                # host='redis',
+                # port=6379,
+                # host='aqueous-badlands-51618.herokuapp.com',
+                # port=80,
+                # password='af80e90f144cdd37ae539349ba0bc7a4',
+                max_connections=10,
+                decode_responses=True,
+                retry_on_timeout=True)
+
+            st.info(redisCon)
+
+            index_name = "idx:data"
+
+            schema = (
+                TextField("$.name", as_name="name", sortable=True),
+                # TextField("$.middleName", as_name="middleName", sortable=True),
+                # TextField("$.lastName", as_name="lastName", sortable=True),
+                # TextField("$.shortName", as_name="shortName", sortable=True),
+                # TextField("$.nickName", as_name="nickName", sortable=True),
+                # TextField("$.side", as_name="side", sortable=True),
+                # TextField("$.country", as_name="country", sortable=True),
+
+                NumericField("$.id", as_name="id"),
+                # NumericField("$.countryId", as_name="countryId"),
+                # NumericField("$.teamId", as_name="teamId"),
+                # NumericField("$.currentTeamId", as_name="currentTeamId"),
+                # NumericField("$.gamesPlayed", as_name="gamesPlayed", sortable=True),
+
+                # # TagField("$.user.city", as_name="city"),
+                # TagField("$.channel", as_name="channel"),
+            )
+
+            try:
+                ftindex_data = redisCon.ft(index_name)
+                ftindex_data.create_index(schema,
+                                            definition=IndexDefinition(
+                                                prefix=["data:"],
+                                                index_type=IndexType.JSON))
+            except redis.exceptions.ResponseError:
+                pass
+
             df['uuid'] = [uuid.uuid4() for x in range(df.shape[0])]
             for index, row in df.iterrows():
                 values = row.to_dict()
