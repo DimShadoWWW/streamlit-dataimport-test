@@ -10,8 +10,8 @@ from furl import furl
 # from redis.commands.search.indexDefinition import IndexDefinition, IndexType
 # from redis.commands.search.query import NumericFilter, Query
 
-st.info('start')
-st.info('started')
+st.write('start')
+st.write('started')
 # uploaded_file = st.file_uploader('Choose a file')
 
 # dest_columns=['', 'id', 'nombre', 'tipo']
