@@ -12,6 +12,7 @@ from redis.commands.search.query import NumericFilter, Query
 
 try:
     redis_url = furl(st.secrets["redis_url"])
+    st.info(redis_url)
 
     redisCon = redis.Redis(
         host=redis_url.host,
