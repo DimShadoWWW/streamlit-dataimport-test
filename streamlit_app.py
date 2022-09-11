@@ -27,6 +27,8 @@ try:
         decode_responses=True,
         retry_on_timeout=True)
 
+    st.info(redisCon)
+
     index_name = "idx:data"
 
     schema = (
