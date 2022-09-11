@@ -96,7 +96,7 @@ if uploaded_file is not None:
         except redis.exceptions.ResponseError:
             pass
 
-        df['uuid'] = [uuid.uuid4() for x in range(df.shape[0])]
+        df['uuid'] = [uuid.uuid4().hex for x in range(df.shape[0])]
         for index, row in df.iterrows():
             values = row.to_dict()
             for k in values.keys():
